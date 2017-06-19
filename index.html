@@ -2,7 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Checkout</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="assets/style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/script.js"></script>
 </head>
 <body>
 
@@ -34,5 +41,175 @@
     </div>
   </div>
 </nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="checkout col-md-8 col-md-offset-2" > 
+      <h6>Checkout</h6>
+	  <div class="col-xs-12 col-md-6" style="float:right;">
+	    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-12">
+		  <h3 class="col-xs-12 text-left">Your Order</h3><div style="clear:both;"></div>
+		  <div class="item col-xs-4">
+		  <img class="glasses" src="assets/img/pic-item.png" alt="glasses"/>
+		  </div>
+		  <div class="col-xs-8">
+		  <h4 class="col-xs-12 text-left">Acme product name</h4>
+		   <button type="button" class="btn btn-default plus col-xs-3" onclick="dodaj()"><img src="assets/img/icon-plus.svg" alt="add"/></button>
+		   <p class="col-xs-2" id="ile"></p>
+		   <button type="button" class="btn btn-default plus col-xs-3" onclick="odejmij()"><img src="assets/img/icon-minus.svg" alt="subtract"/></button>
+		   <p class="col-xs-9 text-left">Price</p>
+		   <p class="col-xs-3" id="cena"></p>
+		  </div>
+		   <div class="item col-xs-4" style="clear:both;">
+		  <img class="glasses" src="assets/img/pic-item.png" alt="glasses"/>
+		  </div>
+		  <div class="col-xs-8">
+		  <h4  class="col-xs-12 text-left">Motorhead glasses black</h4>
+		   <button type="button" class="btn btn-default plus col-xs-3" onclick="dodaj2()"><img src="assets/img/icon-plus.svg" alt="add"/></button>
+		   <p class="col-xs-2" id="ile2"></p>
+		   <button type="button" class="btn btn-default plus col-xs-3" onclick="odejmij2()"><img src="assets/img/icon-minus.svg" alt="subtract"/></button>
+		   <p class="col-xs-9 text-left">Price</p>
+		   <p class="col-xs-3" id="cena2"></p>
+		  </div>
+		</div>
+	    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-12" id="order">
+		  <h2 class="col-xs-12 text-left">Order summary</h2>
+		  <p class="col-xs-8 text-left">Subtotal</p>
+		  <p class="col-xs-4 text-right" id="subtotal"></p>
+		  <p class="col-xs-8 text-left">Shipping</p>
+		  <p class="col-xs-4 text-right" id="shipping"></p>
+	    </div>	
+	    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1 col-md-12" id="suma">
+		  <div class="col-md-11" id="border"></div>
+		  <p class="col-xs-8 text-left">Total</p>
+		  <p class="col-xs-4 text-right" id="total"></p>		  
+	    </div>		
+	  </div>
+	  <div class="col-xs-12 col-md-6" id="formdata">
+	  <h5>Delivery Address</h5>
+	  		<form method="POST" action="..." onsubmit="return checkForm(this);">
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="fname">FIRST NAME</label>
+			<input type="text" class="form-control input-lg" id="fname" required>
+		  </div>
+		  <div class="form-group required  col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="lname">LAST NAME</label>
+			<input type="text" class="form-control input-lg" id="lname" required>
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="email">E-MAIL</label>
+			<input type="email" class="form-control input-lg" id="email" required>
+		  </div>
+		  <div class="form-group col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="phone">PHONE</label>
+			<input type="tel" class="form-control input-lg" id="phone">
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="adress">ADDRESS</label>
+			<input type="text" class="form-control input-lg" id="adress" required>
+		  </div>
+		  <div class="form-group col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="adresscont">ADRESS CONT.</label>
+			<input type="text" class="form-control input-lg" id="adresscont">
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="zip">ZIP CODE</label>
+			<input type="text" class="form-control input-lg" id="zip" required>
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="city">CITY</label>
+			<input type="text" class="form-control input-lg" id="city" required>
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="state">STATE</label>
+			<input type="text" class="form-control input-lg" id="state" required>
+		  </div>
+			<div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">			  
+			  <div class="rail-select">
+				  <div class="col-xs-2 text-right select-side">
+					<img src="assets/img/icon-collapse.svg" alt="select country" id="arrow"/>
+				  </div>
+				  <label for="sel1">COUNTRY</label>
+			  <select class="form-control input-lg" id="sel1" required>
+				<option>Albania</option>
+				<option>Argentina</option>
+				<option>Australia</option>
+				<option>Belgium</option>
+				<option>Brazil</option>
+				<option>Bulgaria</option>
+				<option>Chile</option>
+				<option>China</option>
+				<option>Colombia</option>
+				<option>Cuba</option>
+				<option>Czechia</option>
+				<option>Denmark</option>
+				<option>Egypt</option>
+				<option>Estonia</option>
+				<option>Ethiopia</option>
+				<option>Finland</option>
+				<option>France</option>
+				<option>Germany</option>
+				<option>Greece</option>
+				<option>Greenland</option>
+				<option>Hong Kong</option>
+				<option>Hungary</option>
+				<option>Iceland</option>
+				<option>India</option>
+				<option>Iceland</option>
+				<option>Indonesia</option>
+				<option>Iran</option>
+				<option>Israel</option>
+				<option>Italy</option>
+				<option>Jamaica</option>
+				<option>Japan</option>
+				<option>Kazakhstan</option>
+				<option>Luxemburg</option>
+				<option>Malta</option>
+				<option>Mexico</option>
+				<option>New Zealand</option>
+				<option>Norway</option>
+				<option>Pakistan</option>
+				<option>Poland</option>
+				<option>Romania</option>
+				<option>Russia</option>
+				<option>Poland</option>
+				<option>Serbia</option>
+				<option>Slovakia</option>
+				<option>Slovenia</option>
+				<option>Spain</option>
+				<option>Sweden</option>
+				<option>Ukraine</option>
+				<option>United Kingdom</option>
+				<option selected="selected">United States</option>
+				<option>Zambia</option>
+				<option>Zimbabwe</option>
+			  </select>
+			  </div>
+			</div>	
+		 
+		 		 
+		 <h5>Payment</h5>
+		 
+		   <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="cardnr">CARD NUMBER</label>
+			<input type="text" class="form-control input-lg" id="cardnr" required>
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="cardhold">CARD HOLDER</label>
+			<input type="text" class="form-control input-lg" id="cardhold" required>
+		  </div>
+		  <div class="form-group required col-xs-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="cvc">CVC</label>
+			<input type="text" class="form-control input-lg" id="cvc" required>
+		  </div>
+		 <button type="submit" class="btn btn-default btn-lg col-xs-9" id="buy">BUY</button> 
+		 </form>
+		 
+	     
+		 </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
